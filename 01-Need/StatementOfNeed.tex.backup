@@ -1,0 +1,22 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Automatic Applicator\\ Statement of Need}
+\author{Munzir Zafar}
+
+\begin{document}
+
+\maketitle
+
+The primary purpose for this project is to automate the painting process in Auvitronics. The part that is
+painted the most number of times in the company is the wheel-cover and so the main requirement is to 
+automate its production. But ideally this process should be able to take care of all the parts 
+currently being painted in the plant.
+
+A secondary purpose of the project is to acquire the ability to design robotic arms for automation purposes.
+This project should hopefully clarify the challenges associated with designing of robotic arms in Pakistan.
+Once we complete this project successfully, we will feel more confident to design robotic arms locally
+to meet other automation requirements within this company and outside.
+
+\end{document}

@@ -1,0 +1,107 @@
+1-Kinematic Design Techniques
+-Manipulability-Yoshikawa[67]
+-Generalized inertia ellipsoid-Asada[4]
+-Acceleration radius-Graettinger and Krogh[23]
+-Dynamic performance-Bowling[6]
+-Optimization under dynamic isotropy conditions-Ma and Angeles[37]
+-Kineostatic optimization of manipulators (characteristic length, homogenous space)-Angeles[29]
+-Maximum Reach
+-Stroke
+
+2-Dynamic Design Process
+In practice:
+a-Robot configuration(?), structure components(?) and Drive train components are preliminarily designed based on cycle time, speed or acceleration requirments.
+b-Mass data is obtained based on an initial design. 
+c-Motors and gears are dimensioned based on this mass data. 
+Design variables are: Gear Ratio, rated torque and speed of gears, motor rated torque and speed, as well as some electrical properties of the motors(?). 
+Design criteria are: End-effector linear acceleration or axis rotational speed and acceleration at a large number of predefined points in robot workspace.
+d-Iterate through steps b and c till dimensioning is completed.
+e-Structure stress analysis for ultimate strength and fatigue lifetime
+f-Modifications in structure->change in mass properties->Iterate again through steps c, d and e.
+In Literature:
+-Reduce the problem to selection of optimal gear ratio. Problem: Does not choose from an already existing set of components-Roos[54]
+-Derive gear ratio that optimizes the actuator's output torque for a single axis case with a pure inertial load(?), minimizes the sum of torques required to drive the inertia of the load and the torques required to drive the inertia of the motor's rotor and the transmission. Problem: Assumes constant inertia which is untrue.-Pash and Steering[51]
+-Optimization from a discrete set of already existing components-Van de Straete et al.[65] and [66]
+-Optimum choice of robot actuators for a given trajectory. Minimization of global mass of all actuators wrt maximum pulse torque and maximum temperature constraints. Problem: Does not consider mass of gears nor the tranmission ratios.-Chedmail[11]
+
+
+Chapter 3:
+An approach to drive train design:
+-Select components and have masses
+-Evaluate the performance of the robot
+-If unsatisfied, then either: choose a better design OR decrease performance requirements
+
+Selection of gearboxes and motors:
+Iterative process:
+-Choose based on experience and rules of thumb
+-Evaluate performance
+-If unsatisfied, then either: Increase motor and gearbox performance OR decrease manipulator performance
+
+Increasing motor performance (examples):
+- Add a fan
+- Better/larger motor
+
+Increasing gearbox performance:
+- Select more expensive one
+
+Decreasing manipulator performance:
+- Reduce payload
+- Smaller reach
+- Slower pace or decreasing the cycle time
+- Defining trajectories such that lower torques are needed
+
+Evaluating performance of gearbox:
+- Evaluate joint torques
+- Check peak torque and gearbox equivalent torque: 
+	Peak torque requirement: Maximum allowed acceleration/deceleration torque of the gearbox stated by the manufacturer
+	Equivalent torque: Function of speed, joint torques, and time proportion of working cycle (?)
+- Lifetime prediction of the gearbox based on equivalent torque and rated torque (equation 3.4)---Lifetime is the most important design criteria for gearboxes (with high intermittence temperature should also be considered)
+
+Evaluating performance of motors:
+- Peak torque requirement = acc/dec torque of gear box + torque for rotating parts of gearbox and motor + friction torque
+- Peak torque depends on max current of power supply and torque constant of the motor K_t.
+- Continuous torque = root mean squate (rms) torque for the working cycle.
+- Maximum speed of the motor depends on the back emf, constant K_e and max voltage of the power supply
+- Peak torque rating prevents the permanent magnets from being demagnetized. Continuous torque rating prevents armature from burnout during operation.
+- Heat generation is the most critical problem for electric motors. Depends on thermal characteristics of the mounting of motors.
+
+Intro to BLDC Motors:
+T_m = i * K_t
+e = K_e * w
+u = R * i + K_e * w
+at constant u, increasing e/w decreases i/T_m
+Losses: Friction, Eddy Current, Ohmic (largest)
+Fig3.2/pg30: Efficiency, current and speed as functions of torque
+-eff low at low loads due to friction, improves as load increases, decreases again due to ohmic losses
+Fig3.3/pg31 shows intermittent max speed-torque characteristics of a BLDC
+-toque limited by I_max_ampl or I_max. 
+-Speed limited by max voltage supplied.
+-the curve changes with temperature
+
+Intro to Gearboxes:
+-Requirements: 1. Large reduction in few steps, 2. low inertia, 3. low friction, 4. zero backlash, 5. high stiffness, 6. low lost motion, 7. low weight.
+-Reference [44] is relevant.
+-Rated torque corresponds to the stamina: Larger rated torque means longer lifetime under constant laod conditions.
+-Rated speed is also included in the equation for predicting lifetime. L(hrs)=K*(w/w0)*(T0/Ta)^(10.3) [Eq.3.4]
+-Max acc/dec torque ~2-2.5 times the rated torque.
+-Max allowed speed on output shaft
+-Momentary torque for emergency situations
+
+Trajectory:
+-Task Space Trajectory:  x=f(s), dx=f'*ds,   ddx=f'*dds+f''*ds^2
+-Task-to-joint-space:    x=p(q), dx=J*dq,    ddx=J*ddq+dJ*dq
+-Joint Space Trajectory: q=p\f,  dq=J\f'*ds, ddq=J\((f'*dds+f''*ds^2)-dJ*dq)
+-Dynamic Model:          Q=M*ddq+V+G+B
+-Joint Torques:          Q=a1*dds+a2*ds^2+a3*ds+a4, a1=M*J\f', a2=M*J\(f''-dJ*J\f')+V, a3=B*J\f', a4=G
+-n+1 equations to be optimized by [s,ds]===>Two-state optimization problem.
+-Cost function:		min t_f = int_s0^sf(1/sdot)ds 
+-Constraint1:		|tau_motor| \leq \tau_motmax_i, i=1...n
+-Constraint2: 		|tau_motor| \leq \tau_motmax_i, i=1...n
+-Constraint3:		|ddq| \leq \ddq_max_i, i=1...n
+-Constraint4:		|dq|  \leq \dq_max_i, i=1...n
+-Constraint5:		|q|   \leq \q_max_i, i=1...n
+-Constraint6:		|F| \leq \F_max_i, i=1...n
+-Constraint7:		|T| \leq \T_max_i, i=1...n
+-Last two are cut force and cut torques to limit the lad on the manipulator structure at sensitive parts and components such as bearings
+
+

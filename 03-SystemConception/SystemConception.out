@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [1][-]{section.2}{Design Strategy}{}
+\BOOKMARK [1][-]{section.3}{Hard Automation Versus Robotic Arm}{}
+\BOOKMARK [1][-]{section.4}{Designing the Robot Arm}{}
+\BOOKMARK [2][-]{subsection.4.1}{Developing and Understanding Optimization Procedure Using Preliminary Estimates on the Range of Available Design Options}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Listing Down the Alternatives}{section.4}
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Specifications for Base-Link Placement Alternatives}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Alternatives for Spray Guns}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Motor Alternatives}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Gear-Box Alternatives}{subsection.4.2}
+\BOOKMARK [2][-]{subsection.4.3}{Design Optimization for Dependent Design Variables}{section.4}
+\BOOKMARK [2][-]{subsection.4.4}{Optimizing Indepedent Design Decisions}{section.4}
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Motor Drives}{subsection.4.4}
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Position Sensing}{subsection.4.4}
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Mechanical Links}{subsection.4.4}
+\BOOKMARK [3][-]{subsubsection.4.4.4}{Controller}{subsection.4.4}
+\BOOKMARK [3][-]{subsubsection.4.4.5}{Power}{subsection.4.4}
+\BOOKMARK [3][-]{subsubsection.4.4.6}{Electrical System}{subsection.4.4}
+\BOOKMARK [3][-]{subsubsection.4.4.7}{User Interface}{subsection.4.4}

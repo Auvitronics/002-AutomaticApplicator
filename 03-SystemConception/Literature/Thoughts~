@@ -1,0 +1,32 @@
+GOAL:
+Basically I have to take optimum decisions for five things:
+- Location of the base link
+- Configuration of the actuators
+- Link lengths
+- Motors
+- Gearboxes
+
+RANGE OF AVAILABLE OPTIONS:
+Base link location:
+All locations that will allow the existence of a robot that can access the workspace with
+six or less actuators are included in the range of available options.
+
+Configuration of the actuators: 
+In each of the base link location, any actuator configuration that can access the workspace
+with six or less actuators are included in the range of available options.
+
+Link Lengths:
+For each actuator configuration the lengths of the links that can access the workspace with
+six or less actuators are included in the range of available options.
+
+Motors:
+All motors available on the market.
+
+Gearboxes:
+All gearboxes available on the market.
+
+OBJECTIVE FUNCTION TO BE MINIMIZED:
+The total cost of material.
+
+CONSTRAINTS:
+The requirement specifications that are laid down in the document.
